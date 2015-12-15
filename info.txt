@@ -1,0 +1,6 @@
+py/main.py
+js/index.js
+css/main.css
+
+templates/commons/form.cpp: To include more js or css
+

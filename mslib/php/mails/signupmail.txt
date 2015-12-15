@@ -1,0 +1,4 @@
+Signup confirmation
+Dear {name},
+Thank you for signing up with {website}.
+Thank you.

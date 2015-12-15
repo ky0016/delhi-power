@@ -1,0 +1,41 @@
+function timepass() {
+	alias s='./compile adds'
+}
+
+function c() {
+	python script.py compile
+}
+
+function c1() {
+	scp -r templates cs1120233@ssh1.iitd.ac.in:~/private_html/;
+}
+
+function s() {
+	for i in $(cat tosend|head -n 10); do
+		scp -r $i cs1120233@ssh1.iitd.ac.in:~/private_html/$i;
+	done;
+}
+
+function cs() {
+	c;c1;s;
+}
+
+function add() {
+	tmpfile="/tmp/null";
+	echo $1 > $tmpfile;
+	cat tosend >> $tmpfile;
+	mv $tmpfile tosend
+}
+
+function adds() {
+	add $1
+	subl $1
+}
+
+function copycommon() {
+	zip -r mohit.zip ../cp/index.php ../cp/includes/app.php ../cp/mainpy.py ../cp/todisp.py 
+	unzip -o mohit.zip
+}
+
+#$1 $2
+c

@@ -1,0 +1,50 @@
+{
+open Parser        (* The type token is defined in parser.mli *)
+exception Eof
+}
+
+let letter = ['a'-'z' 'A'-'Z']
+let digit = ['0'-'9']
+let name = (letter | "_" ) ((letter | digit | "_")*)
+let number = ("-" | "") (digit+)
+let space = " " | "\t" | "\n"
+let linecomment = "#" ([^'\n']*) '\n'
+let astring = "'" ((("/") _) | [^ '\'' ])* "'"
+let dstring = '"' ((("/") _) | [^ '\"' ])* '"'
+
+
+
+rule token = parse
+	space     { token lexbuf }
+	|"/*" { comment lexbuf }
+	| number as lxm { NUMBER(int_of_string lxm) }
+	| (astring | dstring) as lxm { STRING(lxm) }
+	| "if" { IF }
+	| "else" { ELSE }
+	| "elif" { ELIF }
+	| "for" { FOR }
+	|"True" { TRUE }
+	|"False" { FALSE }
+	| name as lxm { NAME(lxm) }
+	| "&&"            { AND }
+	| "||"            { OR }
+	| '?'            { QUESTION }
+	| ';'			 {SEMICOLON}
+	| ','			 {COMMA}
+	| '+'            { ADD }
+	| '-'            { SUB }
+	| '*'            { MUL }
+	| ':'            { COLON }
+	| '{'            { LPARENM }
+	| '}'            { RPARENM }
+	| '['            { LPARENB }
+	| ']'            { RPARENB }
+	| '('            { LPAREN }
+	| ')'            { RPAREN }
+	| '='            { EQUAL }
+	| eof            { EOF }
+	| eof            { raise Eof }
+
+and comment = parse 
+	 "*/" { token lexbuf }
+	| _ { comment lexbuf }

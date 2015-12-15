@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+    <meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EmulateIE9" >
+    <script type="text/javascript" src="scripts/d3.min.js"></script>
+    <script type="text/javascript" src="scripts/radialProgress.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+    <!-- Important Owl stylesheet -->
+    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+
+    <!-- Default Theme -->
+    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+
+    <!--  jQuery 1.7+  -->
+    <script src="jquery-1.9.1.min.js"></script>
+
+    <!-- Include js plugin -->
+    <script src="owl.carousel/assets/js/owl.carousel.js"></script>
+
+
+    <style>
+        #navcontainer ul
+        {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+        }
+
+        #navcontainer ul li { display: inline; }
+
+        #navcontainer ul li a
+        {
+            text-decoration: none;
+            padding: .2em 1em;
+            color: #fff;
+            background-color: #036;
+        }
+
+        #navcontainer ul li a:hover
+        {
+            color: #fff;
+            background-color: #369;
+        }
+        #owl-demo .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        body {
+            background-color: #FFFFFF;
+        }
+
+        #test .arc2 {
+            stroke-weight:0.1;
+            fill: #3660b0;
+        }
+
+        #outer {
+            background:#FFFFFF;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        #div1, #div2, #div3, #div4 {
+            width: 33%;
+            height: 200px;
+            box-sizing: border-box;
+            float: left;
+        }
+
+        #div2 .arc {
+            stroke-weight: 0.1;
+            fill: #f0a417;
+        }
+
+        #div2 .arc2 {
+            stroke-weight: 0.1;
+            fill: #b00d08;
+        }
+
+        #div3 .arc {
+            stroke-weight: 0.1;
+            fill: #1d871b;
+        }
+
+
+        .selectedRadial {
+            border-radius: 3px;
+            background: #f4f4f4;
+            color: #000;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            border: 1px solid rgba(200,200,200,0.85);
+        }
+
+        .radial {
+            border-radius: 3px;
+            background: #FFFFFF;
+            color: #000;
+
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="owl-demo" class="owl-carousel owl-theme">
+
+        <div class="item"><img src="deepika.jpg" alt="The Last of us"></div>
+        <div class="item"><img src="deepika.jpg" alt="GTA V"></div>
+        <div class="item"><img src="deepika.jpg" alt="Mirror Edge"></div>
+
+    </div>
+    <div id="navcontainer">
+        <ul>
+            <li><a href="#">Power</a></li>
+            <li><a href="#">Coal</a></li>
+            <li><a href="#">GAS</a></li>
+            <li><a href="#">NTPS</a></li>
+            <li><a href="#">Hydro</a></li>
+        </ul>
+    </div>
+
+    <div id='outer' style="margin-top:40px; padding:10px">
+        <div id="main" style="width:600px; height:200px; margin: 0px auto; ">
+            <div id="div1"></div>
+            <div id="div2"></div>
+            <div id="div3"></div>
+        </div>
+    </div>
+
+
+
+    <script language="JavaScript">
+        $(document).ready(function() {
+
+            $("#owl-demo").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+
+                        // "singleItem:true" is a shortcut for:
+                        // items : 1, 
+                        // itemsDesktop : false,
+                        // itemsDesktopSmall : false,
+                        // itemsTablet: false,
+                        // itemsMobile : false
+
+            });
+
+        });
+        d3.json("data.php", function(error, data) {
+        data.forEach(function(d) {
+        d.date = parseDate(d.date);
+                d.close = + d.close;
+                });
+                /*                          var response = $.ajax({type: "GET",
+                 url: "JSONtest.php",
+                 async: false
+                 }).responseText;
+                 */
+                //console.log(response);
+                data = JSON.parse(response);
+                console.log(data);
+                console.log(data.power.sumYTD_eff);
+                var total_ytd = data.power.sumYTD_eff;
+                var total_mtd = data.power.sumMTD_eff;
+                var div1 = d3.select(document.getElementById('div1'));
+                var div2 = d3.select(document.getElementById('div2'));
+                var div3 = d3.select(document.getElementById('div3'));
+                var div4 = d3.select(document.getElementById('div4'));
+                start(10, total_mtd);
+                function onClick1() {
+                deselect();
+                        div1.attr("class", "selectedRadial");
+                }
+
+        function onClick2() {
+        deselect();
+                div2.attr("class", "selectedRadial");
+        }
+
+        function onClick3() {
+        deselect();
+                div3.attr("class", "selectedRadial");
+        }
+
+        function deselect() {
+        div1.attr("class", "radial");
+                div2.attr("class", "radial");
+                div3.attr("class", "radial");
+        }
+
+
+        function start() {
+        var rp1 = radialProgress(document.getElementById('div1'))
+                .label("actual " + "=" + arguments[0])
+                .onClick(onClick1)
+                .diameter(150)
+                .value(arguments[1])
+                .render();
+                var rp2 = radialProgress(document.getElementById('div2'))
+                .label("actual " + "=" + arguments[0])
+                .onClick(onClick2)
+                .diameter(150)
+                .value(total_mtd)
+                .render();
+                var rp3 = radialProgress(document.getElementById('div3'))
+                .label("actual " + "=" + arguments[0])
+                .onClick(onClick3)
+                .diameter(150)
+                .value(total_ytd)
+                .render();
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+Dear Admin,
+{name} just signed up.

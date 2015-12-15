@@ -1,0 +1,6 @@
+{website} Contact us
+Dear Admin
+{name} sent a message to you.
+phone = {phone}, email = {email}
+==================================
+{content}

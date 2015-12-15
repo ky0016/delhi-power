@@ -1,0 +1,5 @@
+
+
+a: just like array
+da: to create dictionary array ex: da("mohit", "saini", "sss", 1) will return array("mohit" => "saini", "sss" => 1)
+emptyarr: Empty Array, initialize an dictionary array, with all keys as "" string

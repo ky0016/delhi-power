@@ -1,0 +1,24 @@
+py/func.py:
+dl = [list] ::== Dependancy list of current function
+
+
+
+s2j: String to Json conversion
+a2o: Array to option[ dropdown ] list
+
+option list : list of rows, rows[0]: {'dt': "Display Text", 'val': "Value", ... All other Attributes }
+
+>>> "mo{x}hit".format(**{'x': 11})
+'mo11hit'
+
+
+time2str: 
+	string format: https://docs.python.org/2/library/time.html
+
+
+>>> t2f("%d-%m-%Y %I:%M:%S %p ( %b )", tnow()+12)
+'13-09-2015 07:06:52 AM ( Sep )'
+
+
+iem: If Else Multiple statemtns, Warning: All of them will be executed to check it.
+

@@ -1,0 +1,3 @@
+Got money
+Dear {name},
+Rupees {amount} has been credited in your {website} account.

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<head>
+    <meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EmulateIE9" >
+    <script type="text/javascript" src="scripts/d3.min.js"></script>
+    <script type="text/javascript" src="scripts/radialProgress.js"></script>
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+    <!-- Important Owl stylesheet -->
+    <link rel="stylesheet" href="owl.carousel/owl-carousel/owl.carousel.css">
+
+    <!-- Default Theme -->
+    <link rel="stylesheet" href="owl.carousel/owl-carousel/owl.theme.css">
+
+    <!--  jQuery 1.7+  -->
+    <script src="jquery-1.9.1.min.js"></script>
+
+    <!-- Include js plugin -->
+    <script src="owl.carousel/owl-carousel/owl.carousel.js"></script>
+
+
+    <style>
+        #total .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #coal .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #ntps .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #gas .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        #hydro .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        body {
+            background-color: #FFFFFF;
+        }
+
+        #test .arc2 {
+            stroke-weight:0.1;
+            fill: #3660b0;
+        }
+
+        #outer {
+            background:#FFFFFF;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        #div11, #div12, #div13, #div14,#div15,#div21, #div22, #div23, #div24,#div25,#div31, #div32, #div33, #div34,#div35,#div41, #div42, #div43, #div44,#div45,#div51, #div52, #div53, #div54,#div55 {
+            width: auto;
+            height: 200px;
+            box-sizing: border-box;
+            float: none;
+        }
+
+        #div11 .arc {
+            stroke-weight: 1.5;
+            fill: #f0a417;
+        }
+
+
+        #div12 .arc {
+            stroke-weight: 0.5;
+            fill: #1d871b;
+        }
+
+
+        .selectedRadial {
+            border-radius: 50px;
+            background: #f4f4f4;
+            color: #000;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            border: 5px solid rgba(200,200,200,0.85);
+        }
+
+        .radial {
+            border-radius: 5px;
+            background: #FFFFFF;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Total Power</h1>
+    <div id="total" class="owl-carousel owl-theme">
+       
+            <div id="main" style="width:200px; height:200px; margin: auto 605px; ">
+                <div id="div11"></div>
+            </div>
+            <div id="main" style="width:200px; height:200px; margin: auto 605px;">
+                <div id="div12"></div>
+            </div>
+            <div id="main" style="width:200px; height:200px; margin: auto 605px; ">
+                <div id="div13"></div>
+            </div>
+            <div id="main" style="width:200px; height:200px; margin: auto 605px; ">
+                <div id="div14"></div>
+            </div>
+            <div id="main" style="width:200px; height:200px; margin: auto 605px; ">
+                <div id="div15"></div>
+            </div>
+        </div>
+    </div>
+
+    <h1>COAL</h1>
+    <div id="coal" class="owl-carousel owl-theme">
+
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div21"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div22"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div23"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div24"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div25"></div>
+        </div>
+
+    </div>
+    <h1>NTPS</h1>
+    <div id="ntps" class="owl-carousel owl-theme">
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div31"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div32"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div33"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div34"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div35"></div>
+        </div>
+    </div>
+    <h1>GAS</h1>
+    <div id="gas" class="owl-carousel owl-theme">
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div41"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div42"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div43"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div44"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div45"></div>
+
+        </div>
+    </div>
+    <h1>HYDRO</h1>
+    <div id="hydro" class="owl-carousel owl-theme">
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div51"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div52"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div53"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div54"></div>
+        </div>
+        <div id="main" style="width:200px; height:200px; margin: 0px auto; ">
+            <div id="div55"></div>
+        </div>
+    </div>
+    <script language="JavaScript">
+        var response = $.ajax({type: "GET",
+            url: "JSONtest.php",
+            async: false
+        }).responseText;
+        //console.log(response);
+        data = JSON.parse(response);
+        console.log(data);
+        console.log(data.power.sumYTD_eff);
+        var total_ytd = data.power.sumYTD_eff;
+        var total_mtd = data.power.sumMTD_eff;
+        var div11 = d3.select(document.getElementById('div11'));
+        var div12 = d3.select(document.getElementById('div12'));
+        var div13 = d3.select(document.getElementById('div13'));
+        var div14 = d3.select(document.getElementById('div14'));
+        var div15 = d3.select(document.getElementById('div15'));
+
+        var div21 = d3.select(document.getElementById('div21'));
+        var div22 = d3.select(document.getElementById('div22'));
+        var div23 = d3.select(document.getElementById('div23'));
+        var div24 = d3.select(document.getElementById('div24'));
+        var div25 = d3.select(document.getElementById('div25'));
+
+        var div31 = d3.select(document.getElementById('div31'));
+        var div32 = d3.select(document.getElementById('div32'));
+        var div33 = d3.select(document.getElementById('div33'));
+        var div34 = d3.select(document.getElementById('div34'));
+        var div35 = d3.select(document.getElementById('div35'));
+
+        var div41 = d3.select(document.getElementById('div41'));
+        var div42 = d3.select(document.getElementById('div42'));
+        var div43 = d3.select(document.getElementById('div43'));
+        var div44 = d3.select(document.getElementById('div44'));
+        var div45 = d3.select(document.getElementById('div45'));
+
+        var div51 = d3.select(document.getElementById('div51'));
+        var div52 = d3.select(document.getElementById('div52'));
+        var div53 = d3.select(document.getElementById('div53'));
+        var div54 = d3.select(document.getElementById('div54'));
+        var div55 = d3.select(document.getElementById('div55'));
+        start(10, total_mtd);
+
+
+        function onClick1() {
+            deselect();
+            div1.attr("class", "selectedRadial");
+        }
+        function deselect() {
+            div1.attr("class", "radial");
+        }
+        function start() {
+            var rp11 = radialProgress(document.getElementById('div11'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp12 = radialProgress(document.getElementById('div12'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp13 = radialProgress(document.getElementById('div13'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp14 = radialProgress(document.getElementById('div14'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp15 = radialProgress(document.getElementById('div15'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp21 = radialProgress(document.getElementById('div21'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp22 = radialProgress(document.getElementById('div22'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp23 = radialProgress(document.getElementById('div23'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp24 = radialProgress(document.getElementById('div24'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp25 = radialProgress(document.getElementById('div25'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp31 = radialProgress(document.getElementById('div31'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp32 = radialProgress(document.getElementById('div32'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp33 = radialProgress(document.getElementById('div33'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp34 = radialProgress(document.getElementById('div34'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp35 = radialProgress(document.getElementById('div35'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp41 = radialProgress(document.getElementById('div41'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp42 = radialProgress(document.getElementById('div42'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp43 = radialProgress(document.getElementById('div43'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp44 = radialProgress(document.getElementById('div44'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp45 = radialProgress(document.getElementById('div45'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp51 = radialProgress(document.getElementById('div51'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp52 = radialProgress(document.getElementById('div52'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp53 = radialProgress(document.getElementById('div53'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp54 = radialProgress(document.getElementById('div54'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+            var rp55 = radialProgress(document.getElementById('div55'))
+                    .label("actual " + "=" + arguments[0])
+                    .onClick(onClick1)
+                    .diameter(150)
+                    .value(arguments[1])
+                    .render();
+        }
+
+        $(document).ready(function() {
+            $("#total").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+            });
+
+        });
+        $(document).ready(function() {
+            $("#coal").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+            });
+
+        });
+        $(document).ready(function() {
+            $("#ntps").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+            });
+
+        });
+        $(document).ready(function() {
+            $("#gas").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+            });
+
+        });
+        $(document).ready(function() {
+            $("#hydro").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+            });
+
+        });
+    </script>
+</body>
+</html>

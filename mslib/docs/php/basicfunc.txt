@@ -1,0 +1,6 @@
+f_convertinp: 
+	inputs: 
+		$inp: User inputs.
+		$conv: Defined conversion function's array
+		$needtoconv: keys, which need to be applied conv function.
+	output: Converted input array

@@ -1,0 +1,30 @@
+
+# m = htmlnode("mangelal");
+# n1 = htmlnode("sunita");
+# n2 = htmlnode("Vinod");
+
+# mn1 = htmlnode(ptext = "mohit");
+
+# n2.addchild(mn1);
+
+# m.addchild(n1);
+# m.addchild(n2);
+
+
+# print n1.parent.content[1].tag
+
+# print m.tostr()
+
+
+
+# outp = htmltree();
+# outp.open(htmlnode("div", {"color": "blue"}));
+# outp.open(htmlnode(ptext = "Jai Ho India"));
+# outp.close();
+
+# outp1 = htmltree();
+
+# print outp.root.tostr();
+
+
+

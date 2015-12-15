@@ -1,0 +1,115 @@
+define hh1(bg1: "Blue") {
+	style["bg"] = bg;
+	h1(attr: attr, style: style) {
+		p(11);
+		innerHTML();
+		p( innerHTML[0] );
+	}
+	div() {
+		p(bg+style);
+		div(bg:bg){
+			p(style+attr+bg);
+		}
+	}
+}
+
+div1(bg: "Blue") {
+	p("Saini");
+}
+
+x = "Violet";
+
+hh1(style:{"font-size":"34px"}, attr:{onclick: 'f("Mohit");'}, bg:"MS_"+x ) {
+	p("Hey, I am a timepass");
+	p("Hey, I am a timepass2");
+	p("Hey, I am a timepass323");
+	p("Hey, I am a timepass445");
+}
+
+/*
+
+x = (3 == 4);
+
+p(x + "-" + 4 + ";"+ not(x));
+x = 33;
+header(){
+	for(i,5) {
+		div(x:11) {
+			p(22*x + "11");
+			div2() {
+				p("Saini.Mohit");
+			}
+		}
+		p(i+"er");
+		p(i+"er");
+	}
+	p(x+22);
+}
+
+
+
+
+
+
+
+x = 33;
+p(11+"Mohit") ;
+
+p(11+"Mohit"+x) ;
+
+for(i,j,5) {
+	p(11+":"+i+"--"+j);
+}
+
+x = 14+"Mohit" ;
+
+if( 1 ) {
+	p(123);
+	p(3+x+"ww");
+	x = 11;
+} elif ( 0 ) {
+	x = 43+4;
+} elif ( 0 ) {
+	r = x;
+}
+
+p(x);
+
+
+
+
+
+header(x: "ty", er: [11,22, "WW", x, 23, {we: 123} ]) {
+	x = 14+"Mohit" ;
+	html();
+}
+
+
+
+
+
+p(x);
+
+y = [1,2,3,5];
+
+Z_0 = ["11", 3, {mohit: ["Vikash",1]}, x+1 ];
+
+
+Z_0[2]["mohit"][0] = {Murgi: 427};
+
+p( "'" + Z_0[2]["mohit"][0]["Murgi"] + "'dd" );
+
+h1(color1:"Dark Red", attr:{onclick:"Hit Hit"}, style:{font:"12px", "font-style": "arial itelian", "color":"Black" }) {
+	for(i,y) {
+		p("Timepass"+i);
+	}
+}
+
+
+
+p(Z_0);
+
+p([11, None]);
+
+*/
+
